@@ -1,6 +1,5 @@
 package pl.isa.homeworks.zadanie2;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -10,10 +9,10 @@ public class Menu {
         boolean isContinue = true;
 
         while (isContinue) {
-            System.out.println("Wybierz numer menu");
-            System.out.println("1. Widok dzieł");
-            System.out.println("2. Dodaj dzieło");
-            System.out.println("3. Zakończ program");
+            System.out.println("Select a menu number");
+            System.out.println("1. Watch masterpieces");
+            System.out.println("2. Add a masterpiece");
+            System.out.println("3. Finish the program");
 
             if (scanner.hasNextInt()) {
                 int userChoose = scanner.nextInt();
@@ -21,8 +20,11 @@ public class Menu {
                     if (userChoose == 1) break;
                     else if (userChoose == 2) {
                         System.out.println("druga metoda");
+                    } else if (userChoose == 3) {
+                        System.out.println("Program finished, goodbye");
+                        System.exit(0);
                     }
-/*                    switch (userChoose) {
+/*                    switch (userChoose) {  nie mogę wyjść ze switch do kontunuacji programu w klasie Main dopytać
                         case 1 -> goto List<CulturalPiece>;
                         case 2 -> System.out.println("2. Dodaj dzieło"); // add method
                         case 7 -> {
@@ -31,12 +33,12 @@ public class Menu {
                         }
                     }*/
                 } else {
-                    System.out.println("Wybrano niewłaściwy numer");
-                    isContinue = false;
+                    System.out.println("Wrong number selected");
+                    System.exit(0);
                 }
             } else {
-                System.out.println("Wybierz poprawny numer menu");
-                break;
+                System.out.println("Wrong character selected");
+                System.exit(0);
             }
         }
     }
