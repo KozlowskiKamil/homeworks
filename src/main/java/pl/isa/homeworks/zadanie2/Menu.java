@@ -19,19 +19,12 @@ public class Menu {
                 if (userChoose > 0 && userChoose < 4) {
                     if (userChoose == 1) break;
                     else if (userChoose == 2) {
-                        System.out.println("druga metoda");
+                        System.out.println("mettoda 2");
                     } else if (userChoose == 3) {
                         System.out.println("Program finished, goodbye");
                         System.exit(0);
                     }
-/*                    switch (userChoose) {  nie mogę wyjść ze switch do kontunuacji programu w klasie Main dopytać
-                        case 1 -> goto List<CulturalPiece>;
-                        case 2 -> System.out.println("2. Dodaj dzieło"); // add method
-                        case 7 -> {
-                            System.out.println("Zakończ program");
-                            isContinue = false;
-                        }
-                    }*/
+
                 } else {
                     System.out.println("Wrong number selected");
                     System.exit(0);
