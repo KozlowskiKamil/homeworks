@@ -19,7 +19,7 @@ public class CulturalPiecesApp {
         culturalPieces.add(new Music("Californication", "Red Hot Chili Peppers"));
         culturalPieces.add(new Music("Lose Yourself", "Eminem"));
 
-        //addMenu(culturalPieces);
+      //  addMusic(culturalPieces);
 
         for (CulturalPiece piece : culturalPieces) {
             System.out.println("Title: " + piece.getTitle());
@@ -28,7 +28,7 @@ public class CulturalPiecesApp {
         }
     }
 
-    private static void addMenu(List<CulturalPiece> culturalPieces) {
+    public void addMusic(List<CulturalPiece> culturalPieces) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         String input2 = scanner.nextLine();
