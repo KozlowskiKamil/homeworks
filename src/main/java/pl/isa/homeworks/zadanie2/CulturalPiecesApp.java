@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class CulturalPiecesApp {
     public static void main(String[] args) {
 
         CulturalPiecesApp culturalPiecesApp = new CulturalPiecesApp();
-        //   List<CulturalPiece> culturalPieces = new ArrayList<>();
         culturalPiecesApp.showMenu();
     }
 
@@ -36,26 +34,27 @@ public class CulturalPiecesApp {
         String author = scanner.nextLine();
         culturalPieces.add(new Music(title, author));
     }
+
     private static void addMovie(List<CulturalPiece> culturalPieces) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the movie title");
         String title = scanner.nextLine();
         System.out.println("Enter the movie author");
         String author = scanner.nextLine();
-        culturalPieces.add(new Music(title, author));
+        culturalPieces.add(new Movie(title, author));
     }
+
     private static void addPainting(List<CulturalPiece> culturalPieces) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the painting title");
         String title = scanner.nextLine();
         System.out.println("Enter the painting author");
         String author = scanner.nextLine();
-        culturalPieces.add(new Music(title, author));
+        culturalPieces.add(new Painting(title, author));
     }
 
     protected void showMenu() {
 
-        //    CulturalPiecesApp culturalPiecesApp = new CulturalPiecesApp();
         List<CulturalPiece> culturalPieces = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         boolean isContinue = true;
@@ -83,7 +82,6 @@ public class CulturalPiecesApp {
                         System.out.println("Program finished, goodbye");
                         isContinue = false;
                     }
-
                 } else {
                     System.out.println("Wrong number selected");
                     System.exit(0);
