@@ -1,10 +1,15 @@
+/*
 package pl.isa.homeworks.zadanie2;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public interface ListMethod {
+public class ListMethod {
+    CulturalPiecesApp culturalPiecesApp = new CulturalPiecesApp();
+
+    List<CulturalPiece> culturalPiecesss = culturalPiecesApp.
+*/
 /*    private static List<CulturalPiece> getCulturalPieces() {
         List<CulturalPiece> culturalPieces = new ArrayList<>();
         culturalPieces.add(new Movie("The Shawshank Redemption", "Stephen King"));
@@ -14,7 +19,8 @@ public interface ListMethod {
         culturalPieces.add(new Music("Californication", "Red Hot Chili Peppers"));
         culturalPieces.add(new Music("Lose Yourself", "Eminem"));
         return culturalPieces;
-    }*/
+    }*//*
+
 
     private static void addMusic(List<CulturalPiece> culturalPieces) {
         Scanner scanner = new Scanner(System.in);
@@ -22,4 +28,6 @@ public interface ListMethod {
         String input2 = scanner.nextLine();
         culturalPieces.add(new Music(input, input2));
     }
+
 }
+*/

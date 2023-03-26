@@ -1,14 +1,12 @@
+/*
 package pl.isa.homeworks.zadanie2;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class Menu implements ListMethod{
+public class Menu {
     protected void showMenu() {
 
         Scanner scanner = new Scanner(System.in);
-        CulturalPiecesApp addCulturalPiece = new CulturalPiecesApp();
         boolean isContinue = true;
 
         while (isContinue) {
@@ -22,7 +20,7 @@ public class Menu implements ListMethod{
                 if (userChoose > 0 && userChoose < 4) {
                     if (userChoose == 1) break;
                     else if (userChoose == 2) {
-                        addCulturalPiece.addMusic();
+                        System.out.println("Podaj tytuł:");
                     } else if (userChoose == 3) {
                         System.out.println("Program finished, goodbye");
                         System.exit(0);
@@ -39,10 +37,12 @@ public class Menu implements ListMethod{
         }
     }
 
+*/
 /*    private static void addMusic(List<CulturalPiece> culturalPieces) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         String input2 = scanner.nextLine();
-        culturalPieces.add(new Music(input, input2));*/
-    }
-}
+        culturalPieces.add(new Music(input, input2));
+    }*//*
+
+}*/
