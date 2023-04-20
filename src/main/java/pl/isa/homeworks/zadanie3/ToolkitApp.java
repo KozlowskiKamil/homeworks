@@ -1,6 +1,11 @@
 package pl.isa.homeworks.zadanie3;
 
-import java.util.Scanner;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 public class ToolkitApp {
     private static final int SHOW_ALL = 1;
@@ -9,20 +14,41 @@ public class ToolkitApp {
     private static final int EXIT = 0;
 
     public static void main(String[] args) {
+        readJson();
+
+
         ToolkitController toolkitController = new ToolkitController();
         Scanner scanner = new Scanner(System.in);
 
         boolean isRunning = true;
         while (isRunning) {
             showOptions();
-            int selectedOption = readOption(scanner);
+            try {
+                int selectedOption = readOption(scanner);
 
-            switch (selectedOption) {
-                case SHOW_ALL -> showAll(toolkitController);
-                case FIND_TOOL -> findTool();
-                case ADD_TOOL -> addTool();
-                case EXIT -> isRunning = false;
+                switch (selectedOption) {
+                    case SHOW_ALL -> showAll(toolkitController);
+                    case FIND_TOOL -> findTool();
+                    case ADD_TOOL -> addTool();
+                    case EXIT -> isRunning = false;
+                    default -> System.out.println("Został wprowadzony niewłaściwy numer.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Został wprowadzony niewłaściwy znak.");
+                scanner.next();
             }
+
+        }
+    }
+
+    private static void readJson() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            File file = new File("src/main/resources/toolkit.json");
+            TypeReference<List<Tool>> typeReference = new TypeReference<>() {};
+            List<Tool> toolList = objectMapper.readValue(file, typeReference);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
