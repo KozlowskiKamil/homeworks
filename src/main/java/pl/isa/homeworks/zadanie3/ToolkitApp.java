@@ -47,6 +47,7 @@ public class ToolkitApp {
             File file = new File("src/main/resources/toolkit.json");
             TypeReference<List<Tool>> typeReference = new TypeReference<>() {};
             List<Tool> toolList = objectMapper.readValue(file, typeReference);
+            System.out.println("toolList = " + toolList);
         } catch (IOException e) {
             e.printStackTrace();
         }

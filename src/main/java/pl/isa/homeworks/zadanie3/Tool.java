@@ -4,6 +4,9 @@ public class Tool {
     private String name;
     private ToolSize toolSize;
 
+    public Tool() {
+    }
+
     public Tool(String name, ToolSize size) {
         this.name = name;
         this.toolSize = size;
@@ -26,5 +29,13 @@ public class Tool {
     }
 
     public record ToolSize(float size, String unit) {
+    }
+
+    @Override
+    public String toString() {
+        return "Tool{" +
+                "name='" + name + '\'' +
+                ", toolSize=" + toolSize +
+                '}';
     }
 }
