@@ -48,10 +48,6 @@ public class ToolkitApp {
         return scanner.nextInt();
     }
 
-    private static String readString(Scanner scanner) {
-        return scanner.nextLine();
-    }
-
     private static void showAll(ToolkitController toolkitController) {
         if (toolkitController.isEmpty()) {
             System.out.println("You have no tools in your toolkit");
