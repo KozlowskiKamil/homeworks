@@ -10,11 +10,9 @@ public class ToolkitApp {
     private static final int EXIT = 0;
 
     public static void main(String[] args) {
-
-
         ToolkitController toolkitController = new ToolkitController();
         Scanner scanner = new Scanner(System.in);
-//        System.out.println(toolkitController.getTools().get(0));
+
 
         boolean isRunning = true;
         while (isRunning) {
@@ -24,7 +22,7 @@ public class ToolkitApp {
 
                 switch (selectedOption) {
                     case SHOW_ALL -> showAll(toolkitController);
-                    case FIND_TOOL -> findTool();
+                    case FIND_TOOL -> findTool(toolkitController);
                     case ADD_TOOL -> addTool();
                     case EXIT -> isRunning = false;
                     default -> System.out.println("Został wprowadzony niewłaściwy numer.");
@@ -50,6 +48,10 @@ public class ToolkitApp {
         return scanner.nextInt();
     }
 
+    private static String readString(Scanner scanner) {
+        return scanner.nextLine();
+    }
+
     private static void showAll(ToolkitController toolkitController) {
         if (toolkitController.isEmpty()) {
             System.out.println("You have no tools in your toolkit");
@@ -65,8 +67,14 @@ public class ToolkitApp {
                 + "\nSize: " + tool.getToolSize().size() + " " + tool.getToolSize().unit());
     }
 
-    private static void findTool() {
-        System.out.println("Sorry, I don't know how to find tools yet...");
+    private static void findTool(ToolkitController toolkitController) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Wprowadz narzedzie");
+        String find = scanner.nextLine().toLowerCase();
+        if (toolkitController.getTools().stream().anyMatch(tool -> tool.getName().toLowerCase().contains(find))) {
+            System.out.println("You have tool " + find + " in your toolkit");
+
+        } else System.out.println("You don't have any tools with this name");
     }
 
     private static void addTool() {
