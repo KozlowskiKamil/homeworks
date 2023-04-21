@@ -14,6 +14,7 @@ public class ToolkitApp {
 
         ToolkitController toolkitController = new ToolkitController();
         Scanner scanner = new Scanner(System.in);
+//        System.out.println(toolkitController.getTools().get(0));
 
         boolean isRunning = true;
         while (isRunning) {

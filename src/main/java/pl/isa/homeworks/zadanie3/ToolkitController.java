@@ -22,7 +22,7 @@ public class ToolkitController {
     }
 
     public boolean isEmpty() {
-        return true;
+        return false;
     }
 
     public boolean add(Tool tool) {
