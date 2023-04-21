@@ -21,11 +21,7 @@ public class ToolkitController {
         return new ArrayList<>(tools);
     }
 
-    public boolean isEmpty() {
-        if (tools.isEmpty()) {
-            return true;
-        } else return false;
-    }
+    public boolean isEmpty() {return tools.isEmpty();}
 
     public boolean add(Tool tool) {
         tools.add(tool);
@@ -37,8 +33,7 @@ public class ToolkitController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             File file = new File("src/main/resources/toolkit.json");
-            TypeReference<List<Tool>> typeReference = new TypeReference<>() {
-            };
+            TypeReference<List<Tool>> typeReference = new TypeReference<>() {};
             List<Tool> toList = objectMapper.readValue(file, typeReference);
             return toList;
         } catch (IOException e) {
@@ -52,8 +47,10 @@ public class ToolkitController {
             ObjectMapper objectMapper = new ObjectMapper();
             File file = new File("src/main/resources/toolkit.json");
             objectMapper.writeValue(file, tools);
+            System.out.println("Tools saved correctly");
             return true;
         } catch (IOException e) {
+            System.out.println("Tools not saved error");
             e.printStackTrace();
             return false;
         }

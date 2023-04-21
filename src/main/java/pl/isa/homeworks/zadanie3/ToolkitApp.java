@@ -1,6 +1,7 @@
 package pl.isa.homeworks.zadanie3;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class ToolkitApp {
@@ -12,8 +13,6 @@ public class ToolkitApp {
     public static void main(String[] args) {
         ToolkitController toolkitController = new ToolkitController();
         Scanner scanner = new Scanner(System.in);
-
-
         boolean isRunning = true;
         while (isRunning) {
             showOptions();
@@ -35,7 +34,6 @@ public class ToolkitApp {
         }
     }
 
-
     private static void showOptions() {
         System.out.println("Menu options\n"
                 + SHOW_ALL + " - show all tools\n"
@@ -53,7 +51,6 @@ public class ToolkitApp {
             System.out.println("You have no tools in your toolkit");
             return;
         }
-
         toolkitController.getTools().forEach(ToolkitApp::showTool);
         System.out.println("---");
     }
@@ -63,14 +60,17 @@ public class ToolkitApp {
                 + "\nSize: " + tool.getToolSize().size() + " " + tool.getToolSize().unit());
     }
 
-    private static void findTool(ToolkitController toolkitController) { // TODO: 21.04.2023 zmienic na wyswietlenie listy
+    private static void findTool(ToolkitController toolkitController) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Search for a tool");
         String find = scanner.nextLine().toLowerCase();
-        if (toolkitController.getTools().stream().anyMatch(tool -> tool.getName().toLowerCase().contains(find))) {
-            System.out.println("You have tool " + find + " in your toolkit");
-
-        } else System.out.println("You don't have any tools with this name");
+        List<Tool> findList = toolkitController.getTools().stream().filter(tool -> tool.getName().toLowerCase().contains(find)).toList();
+        if (findList.isEmpty()) {
+            System.out.println("You don't have any tools with this name");
+        } else {
+            System.out.println("You have the tools with this name: ");
+            findList.forEach(ToolkitApp::showTool);
+        }
     }
 
     private static void addTool(ToolkitController toolkitController) {
@@ -84,9 +84,5 @@ public class ToolkitApp {
         String addUnit = scanner.nextLine();
         Tool newTool = new Tool(addName, new Tool.ToolSize(addSize, addUnit));
         toolkitController.add(newTool);
-        toolkitController.getTools().add(newTool);
-        System.out.println("Tool added successfully");
-        toolkitController.getTools().forEach(s -> System.out.println("s = " + s));
     }
-
 }
