@@ -23,12 +23,12 @@ public class ToolkitApp {
                 switch (selectedOption) {
                     case SHOW_ALL -> showAll(toolkitController);
                     case FIND_TOOL -> findTool(toolkitController);
-                    case ADD_TOOL -> addTool();
+                    case ADD_TOOL -> addTool(toolkitController);
                     case EXIT -> isRunning = false;
-                    default -> System.out.println("Został wprowadzony niewłaściwy numer.");
+                    default -> System.out.println("The wrong number has been entered.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Został wprowadzony niewłaściwy znak.");
+                System.out.println("An invalid character has been entered.");
                 scanner.next();
             }
 
@@ -63,9 +63,9 @@ public class ToolkitApp {
                 + "\nSize: " + tool.getToolSize().size() + " " + tool.getToolSize().unit());
     }
 
-    private static void findTool(ToolkitController toolkitController) {
+    private static void findTool(ToolkitController toolkitController) { // TODO: 21.04.2023 zmienic na wyswietlenie listy
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Wprowadz narzedzie");
+        System.out.println("Search for a tool");
         String find = scanner.nextLine().toLowerCase();
         if (toolkitController.getTools().stream().anyMatch(tool -> tool.getName().toLowerCase().contains(find))) {
             System.out.println("You have tool " + find + " in your toolkit");
@@ -73,7 +73,19 @@ public class ToolkitApp {
         } else System.out.println("You don't have any tools with this name");
     }
 
-    private static void addTool() {
-        System.out.println("Sorry, I don't know how to add tools yet...");
+    private static void addTool(ToolkitController toolkitController) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Add a name tool");
+        String addName = scanner.nextLine();
+        System.out.println("Add a size tool");
+        float addSize = scanner.nextFloat();
+        scanner.nextLine();
+        System.out.println("Add a unit tool");
+        String addUnit = scanner.nextLine();
+        Tool newTool = new Tool(addName, new Tool.ToolSize(addSize, addUnit));
+        toolkitController.getTools().add(newTool);
+        System.out.println("Tool added successfully");
+        toolkitController.getTools().forEach(s -> System.out.println("s = " + s));
     }
+
 }

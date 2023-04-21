@@ -30,4 +30,12 @@ public class Tool {
 
     public record ToolSize(float size, String unit) {
     }
+
+    @Override
+    public String toString() {
+        return "Tool{" +
+                "name='" + name + '\'' +
+                ", toolSize=" + toolSize +
+                '}';
+    }
 }
