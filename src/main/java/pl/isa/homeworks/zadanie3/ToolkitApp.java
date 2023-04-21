@@ -1,11 +1,7 @@
 package pl.isa.homeworks.zadanie3;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class ToolkitApp {
     private static final int SHOW_ALL = 1;
@@ -14,7 +10,6 @@ public class ToolkitApp {
     private static final int EXIT = 0;
 
     public static void main(String[] args) {
-        readJson();
 
 
         ToolkitController toolkitController = new ToolkitController();
@@ -41,17 +36,6 @@ public class ToolkitApp {
         }
     }
 
-    private static void readJson() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            File file = new File("src/main/resources/toolkit.json");
-            TypeReference<List<Tool>> typeReference = new TypeReference<>() {};
-            List<Tool> toolList = objectMapper.readValue(file, typeReference);
-            System.out.println("toolList = " + toolList);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private static void showOptions() {
         System.out.println("Menu options\n"

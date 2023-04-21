@@ -1,10 +1,17 @@
 package pl.isa.homeworks.zadanie3;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ToolkitController {
     private final List<Tool> tools;
+
 
     public ToolkitController() {
         tools = readToolkit();
@@ -24,7 +31,15 @@ public class ToolkitController {
     }
 
     private List<Tool> readToolkit() {
-        return new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            File file = new File("src/main/resources/toolkit.json");
+            TypeReference<List<Tool>> typeReference = new TypeReference<>() {};
+            List<Tool> toList = objectMapper.readValue(file, typeReference);
+            return toList;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }return Collections.emptyList();
     }
 
     private boolean saveToolkit() {
