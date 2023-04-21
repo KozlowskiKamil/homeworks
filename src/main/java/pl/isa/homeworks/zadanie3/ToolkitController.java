@@ -33,8 +33,9 @@ public class ToolkitController {
     }
 
     private List<Tool> readToolkit() {
-        ObjectMapper objectMapper = new ObjectMapper();
+
         try {
+            ObjectMapper objectMapper = new ObjectMapper();
             File file = new File("src/main/resources/toolkit.json");
             TypeReference<List<Tool>> typeReference = new TypeReference<>() {
             };
@@ -47,6 +48,14 @@ public class ToolkitController {
     }
 
     private boolean saveToolkit() {
-        return false;
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            File file = new File("src/main/resources/toolkit.json");
+            objectMapper.writeValue(file, tools);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

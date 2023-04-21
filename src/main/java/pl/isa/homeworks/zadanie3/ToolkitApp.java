@@ -83,6 +83,7 @@ public class ToolkitApp {
         System.out.println("Add a unit tool");
         String addUnit = scanner.nextLine();
         Tool newTool = new Tool(addName, new Tool.ToolSize(addSize, addUnit));
+        toolkitController.add(newTool);
         toolkitController.getTools().add(newTool);
         System.out.println("Tool added successfully");
         toolkitController.getTools().forEach(s -> System.out.println("s = " + s));
